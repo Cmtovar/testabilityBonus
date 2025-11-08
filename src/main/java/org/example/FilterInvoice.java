@@ -17,6 +17,12 @@ public class FilterInvoice {
         this.db = new Database();
         this.dao = new QueryInvoicesDAO(db);
     }
+
+    // new constructor - allows dependency injection for testing
+    public FilterInvoice(QueryInvoicesDAO dao) {
+        this.dao = dao;
+    }
+
     public List<Invoice> lowValueInvoices() {
             List<Invoice> all = dao.all();
 
